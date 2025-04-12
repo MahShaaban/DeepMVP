@@ -1,12 +1,12 @@
-# DeepVEP
-**DeepVEP**: mutation impact prediction on post-translational modifications using deep learning
+# DeepMVP
+**DeepMVP**: mutation impact prediction on post-translational modifications using deep learning
 
 ### Table of contents:
 
-- [DeepVEP](#deepvep)
+- [DeepMVP](#deepmvp)
     - [Table of contents:](#table-of-contents)
   - [Installation](#installation)
-      - [Download DeepVEP](#download-deepvep)
+      - [Download DeepMVP](#download-deepmvp)
       - [Installation](#installation-1)
       - [Download model files](#download-model-files)
   - [Usage](#usage)
@@ -16,28 +16,28 @@
 
 ## Installation
 
-#### Download DeepVEP
+#### Download DeepMVP
 
 ```shell
-$ git clone https://github.com/bzhanglab/DeepVEP
+$ git clone https://github.com/bzhanglab/DeepMVP
 ```
 
 #### Installation
 
-DeepVEP is a python3 package. TensorFlow (>=2.6) is supported. Its dependencies can be installed via
+DeepMVP is a python3 package. TensorFlow (>=2.6) is supported. Its dependencies can be installed via
 
 ```shell
 $ pip install -r requirements.txt
 ```
-DeepVEP has been tested on both Linux and Windows systems. It supports training and prediction on both CPU and GPU.
+DeepMVP has been tested on both Linux and Windows systems. It supports training and prediction on both CPU and GPU.
 
 #### Download model files
 
-The pretrained model files are available at [DeepVEP model repository](http://deepvep.ptmax.org/). After the model files are downloaded, decompress the *.tar.gz file and move all the files to the **models** folder as shown below:
+The pretrained model files are available at [DeepMVP model repository](http://DeepMVP.ptmax.org/). After the model files are downloaded, decompress the *.tar.gz file and move all the files to the **models** folder as shown below:
 
 ```
 ├── README.md
-├── deepvep.py
+├── DeepMVP.py
 ├── lib
 │   ├── DataIO.py
 │   ├── Metrics.py
@@ -79,7 +79,7 @@ python deepmp.py predict -h
 Below is an example for mutation impact prediction. The input for ``-i`` is a **TSV** format file which contains mutation information. The input for ``-d`` is a protein database file in FASTA format which contains the protein sequences for the wild type of proteins.
 
 ```
-python deepvep.py predict -m models/ -i example/mutation_input.tsv -d example/Q5S007.fasta -t 1 -o mutation_output_folder
+python DeepMVP.py predict -m models/ -i example/mutation_input.tsv -d example/Q5S007.fasta -t 1 -o mutation_output_folder
 ```
 
 The required columns for input of ``-i`` include **Protein**, **AA_Ref**, **AA_Pos** and **AA_Var**. An example ("example/mutation_input.tsv") is shown below:
@@ -119,7 +119,7 @@ The output folder ("mutation_output_folder") of the example command line looks l
 
 ```
 mutation_output_folder
-├── deepvep-mutation_impact.tsv
+├── deepmvp-mutation_impact.tsv
 ├── acetylation_k
 ├── glycosylation_n
 ├── methylation_k
@@ -130,7 +130,7 @@ mutation_output_folder
 └── ubiquitination_k
 ```
 
-The output file "mutation_output_folder/deepvep-mutation_impact.tsv" contains the predicted mutation impact on all the PTM sites supported by DeepVEP. This is the only file that users need to use for downstream analysis. The other folders contain intermediate prediction files.
+The output file "mutation_output_folder/deepmvp-mutation_impact.tsv" contains the predicted mutation impact on all the PTM sites supported by DeepMVP. This is the only file that users need to use for downstream analysis. The other folders contain intermediate prediction files.
 
 ```
 Protein  AA_Ref  AA_Pos  AA_Var  pos   diff_pos  w_pep            m_pep            w_prob      m_prob      delta_prob   ptm
@@ -165,10 +165,10 @@ The prediction took less than 3 minutes using CPU on a Linux server (64G RAM and
 
 #### PTM site prediction:
 
-Below is an example for PTM site prediction. The input (-d) is a protein database file in FASTA format which contains the protein sequences to predict. The following command line is used to predict all PTM sites supported by DeepVEP.
+Below is an example for PTM site prediction. The input (-d) is a protein database file in FASTA format which contains the protein sequences to predict. The following command line is used to predict all PTM sites supported by DeepMVP.
 
 ```
-python deepvep.py predict -m models/ -d example/Q5S007.fasta -t 2 -o output_folder
+python DeepMVP.py predict -m models/ -d example/Q5S007.fasta -t 2 -o output_folder
 ```
 
 The output folder ("output_folder") of the example command line looks like below:

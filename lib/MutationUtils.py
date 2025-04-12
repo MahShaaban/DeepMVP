@@ -17,7 +17,7 @@ from .Utils import add_ptm_column
 
 
 def mutation_impact_prediction_for_multiple_ptms(model_dir=None, input_file=None, db=None, window_size=7,
-                                                 prefix="deepvep", out_dir="./", ensemble_method="average",
+                                                 prefix="deepmvp", out_dir="./", ensemble_method="average",
                                                  add_model_explain=False, bg_data=None):
     model_folders = [os.path.join(model_dir,f) for f in listdir(model_dir) if isdir(os.path.join(model_dir,f))]
     res_files = dict()
@@ -66,7 +66,7 @@ def get_header_index_for_vep(input_file):
     op.close()
     return count
 
-def mutation_impact_prediction(model_file=None, input_file=None, db=None, window_size=7, prefix="deepvep", out_dir="./",
+def mutation_impact_prediction(model_file=None, input_file=None, db=None, window_size=7, prefix="deepmvp", out_dir="./",
                                ensemble_method="average",add_model_explain=False, bg_data=None):
 
     ## The following columns must be present in the input_file:
@@ -192,7 +192,7 @@ def calc_log_fold_changes_of_odds(x):
     return y
 
 
-def process_mutation_data_will_be_removed(input_file:str, db, ptm_aa="sty", window_size=7, prefix = "deepvep", out_dir="./"):
+def process_mutation_data_will_be_removed(input_file:str, db, ptm_aa="sty", window_size=7, prefix = "deepmvp", out_dir="./"):
     ## The following columns must be present in the input_file:
     ## Protein, AA_Ref, AA_Pos, AA_Var
     ## pos is 1-based
@@ -408,7 +408,7 @@ def process_mutation_data_will_be_removed(input_file:str, db, ptm_aa="sty", wind
     out_file_map['mutation'] = mutation_file
     return out_file_map
 
-def process_mutation_data(input_file:str, db, ptm_aa="sty", window_size=7, prefix = "deepvep", out_dir="./"):
+def process_mutation_data(input_file:str, db, ptm_aa="sty", window_size=7, prefix = "deepmvp", out_dir="./"):
     ## The following columns must be present in the input_file:
     ## Protein, AA_Ref, AA_Pos, AA_Var
     ## pos is 1-based

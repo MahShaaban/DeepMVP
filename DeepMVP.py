@@ -9,7 +9,7 @@ import os
 def main():
 
     if len(sys.argv) == 1:
-        print("python deepvep.py [train, predict, process, tool, vcf]")
+        print("python DeepMVP.py [train, predict, process, tool, vcf]")
         sys.exit(0)
     else:
 
@@ -19,9 +19,9 @@ def main():
 
             print("Run training!")
             parser = argparse.ArgumentParser(
-                description='DeepVEP')
+                description='DeepMVP')
             parser = argparse.ArgumentParser(
-                description='DeepVEP')
+                description='DeepMVP')
             parser.add_argument('-i', '--input', default=None, type=str, required=True,
                                 help="Input data for training")
             parser.add_argument('-t', '--test', default=None, type=str,
@@ -91,7 +91,7 @@ def main():
 
             print("Run prediction!")
             parser = argparse.ArgumentParser(
-                description='DeepVEP')
+                description='DeepMVP')
             parser.add_argument('-i', '--input', default=None, type=str, required=False,
                                 help="Input data for prediction")
             parser.add_argument('-d', '--db', default=None, type=str, required=False,
@@ -200,7 +200,7 @@ def main():
             print("Run process!")
             # prepare data for training, testing and prediction
             parser = argparse.ArgumentParser(
-                description='DeepVEP')
+                description='DeepMVP')
             parser.add_argument('-i', '--input', default=None, type=str, required=True,
                                 help="Input data")
             parser.add_argument('-r', '--refine', default=None, type=str, required=False,
@@ -277,7 +277,7 @@ def main():
         elif mode == "tool":
 
             parser = argparse.ArgumentParser(
-                description='DeepVEP')
+                description='DeepMVP')
             parser.add_argument('-i', '--input', default=None, type=str,
                                 help="Input data")
             parser.add_argument('-p', '--pattern', default=None, type=str,
@@ -307,7 +307,7 @@ def main():
 
             print("VCF annotation!")
             parser = argparse.ArgumentParser(
-                description='DeepVEP')
+                description='DeepMVP')
             parser.add_argument('-i', '--input', default=None, type=str,
                                 help="Input data")
             parser.add_argument('-c', '--config', default=None, type=str,
