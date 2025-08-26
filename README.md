@@ -219,6 +219,6 @@ The prediction took less than 3 minutes using CPU on a Linux server (64G RAM and
 
 ## How to cite:
 
-There is no a manuscript to cite yet.
+Wen, B., Wang, C., Li, K. et al. DeepMVP: deep learning models trained on high-quality data accurately predict PTM sites and variant-induced alterations. **Nat Methods** (2025). https://doi.org/10.1038/s41592-025-02797-x
 
 
