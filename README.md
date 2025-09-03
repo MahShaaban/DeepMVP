@@ -216,6 +216,42 @@ Below please find the description of each column in the output file "output_fold
 
 The prediction took less than 3 minutes using CPU on a Linux server (64G RAM and 16 CPUs).
 
+## Protein Consequences
+
+Often, variants would be otained as changes in coding sequences. These would
+need to be translated to the corresponding change in protein sequence. 
+
+Below is an example of two varaints in VCF format.
+
+```
+head example/mutation_input.vcf 
+12      40310434                C       T
+12      40310435                G       A
+```
+
+Variant can be translated to protein consequence and outputed in the format 
+required by DeepMVP. `translate` calls [ProtVar API](https://www.ebi.ac.uk/ProtVar/)
+therefore a connection to the internet is required for it to work
+
+```
+python DeepMVP.py translate -i example/mutation_input.vcf
+Protein AA_Ref  AA_Pos  AA_Var
+Q5S007  R       1441    C
+Q5S007  R       1441    H
+```
+In addition, the FASTA (homo sapians) file which contains the protein sequences
+for the wild type of all proteins can be downloaed and edited as follows
+
+```
+wget wget https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+zcat ref/uniprot_sprot.fasta.gz | awk '/^>/ {split($0, a, "|"); print ">" a[2]; next} {print}' > ref/uniprot_sprot_modified.fasta
+grep -A 3 Q5S007 uniprot_sprot_modified.fasta 
+>Q5S007
+MASGSCQGCEEDEETLKKLIVRLNNVQEGKQIETLVQILEDLLVFTYSERASKLFQGKNI
+HVPLLIVLDSYMRVASVQQVGWSLLCKLIEVCPGTMQSLMGPQDVGNDWEVLGVHQLILK
+MLTVHNASVNLSVIGLKTLDLLLTSGKITLLILDEESDIFMLIFDAMHSFPANDEVQKLG
+```
+
 
 ## How to cite:
 
