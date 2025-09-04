@@ -99,6 +99,8 @@ Below please find the description of each column in the output file "example/mut
 | AA_Pos | the mutation position on the protein (1-based: the position of the first amino acid on the protein is 1) |
 | AA_Var | the mutation amino acid |
 
+An optional column `Variant_ID` can be added to the input. The same IDs would
+be used in the output rather than generating IDs from row numbers.
 
 For the above example input (``-i``), the wild type protein sequence of protein **Q5S007** should be present in the input protein database for ``-d``. The first 10 lines of the file "example/Q5S007.fasta" are shown below:
 
@@ -235,9 +237,9 @@ therefore a connection to the internet is required for it to work
 
 ```
 python DeepMVP.py translate -i example/mutation_input.vcf
-Protein AA_Ref  AA_Pos  AA_Var
-Q5S007  R       1441    C
-Q5S007  R       1441    H
+Variant_ID  Protein AA_Ref  AA_Pos  AA_Var
+chr12:40310434:C:T  Q5S007  R       1441    C
+chr12:40310435:G:A  Q5S007  R       1441    H
 ```
 In addition, the FASTA (homo sapians) file which contains the protein sequences
 for the wild type of all proteins can be downloaed and edited as follows
